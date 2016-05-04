@@ -19,9 +19,6 @@ and these for AWS CLI (or less if using EC2-roles) (see [AWS CLI ENV-vars](http:
 
 Be sure to bind a temporary volume to `/backuptemp` (or somewhere else, but set env `TEMP_BACKUP_DIR` to that).
 
-## Logging
-Meh.. TODO
-
 ## Command
 Entrypoint is the script [dump_and_save](dump_and_save).
 
