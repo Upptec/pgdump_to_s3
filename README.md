@@ -41,4 +41,4 @@ explanied as (from `man pg_dump`):
 
 ## Example
 
-`docker run --rm -it -e PGHOST=xx -e PGUSER=xx -e PGPASSWORD=xx -e AWS_DEFAULT_REGION=eu-west-1 -e AWS_ACCESS_KEY_ID=xx -e AWS_SECRET_ACCESS_KEY=xx -v /backuptemp upptec/pgbackup_to_s3 s3://my_bucket/my_folder mydb`
+`docker run --rm -it -e PGHOST=xx -e PGUSER=xx -e PGPASSWORD=xx -e AWS_DEFAULT_REGION=eu-west-1 -e AWS_ACCESS_KEY_ID=xx -e AWS_SECRET_ACCESS_KEY=xx -v /backuptemp upptec/pgdump_to_s3 s3://my_bucket/my_folder mydb`
