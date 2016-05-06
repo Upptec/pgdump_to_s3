@@ -42,3 +42,13 @@ explanied as (from `man pg_dump`):
 ## Example
 
 `docker run --rm -it -e PGHOST=xx -e PGUSER=xx -e PGPASSWORD=xx -e AWS_DEFAULT_REGION=eu-west-1 -e AWS_ACCESS_KEY_ID=xx -e AWS_SECRET_ACCESS_KEY=xx -v /backuptemp upptec/pgdump_to_s3 s3://my_bucket/my_folder mydb`
+
+## Howto restore
+Note: we use it to restore to a local db, mostly for developing purposes, so `pg_restore`-command below reflects that.
+
+  * After downloading, unpack using `gzip -d mydump.gz`.
+  * Then: `pg_restore --verbose --clean --no-acl --no-owner -h localhost -U myuser -d mydb mydump`.
+
+Since this utility uses same name on dump as database, and we use our local username as db-user, this is would be the syntax for database `mydb`, unpacked from file `mydb.gz`:
+
+    pg_restore --verbose --clean --no-acl --no-owner -h localhost -U $USER -d mydb mydb
