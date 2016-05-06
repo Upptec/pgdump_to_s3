@@ -34,8 +34,7 @@ Utility will use these parameters for pg_dump :
 `pg_dump -Fc --no-acl --no-owner`
 
 explanied as (from `man pg_dump`):
-  * `-Fc` = Format custom - Output a custom-format archive suitable for input into pg_restore. Together with the directory output format, this is the most flexible output format in that it
-               allows manual selection and reordering of archived items during restore. This format is also compressed by default.
+  * `-Fc` = Format custom - Output a custom-format archive suitable for input into pg_restore. Together with the directory output format, this is the most flexible output format in that it allows manual selection and reordering of archived items during restore. This format is also compressed by default.
   * `--no-acl` = Prevent dumping of access privileges (grant/revoke commands).
   * `--no-owner` = Do not output commands to set ownership of objects to match the original database.
 
