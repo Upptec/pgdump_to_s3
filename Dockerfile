@@ -1,4 +1,4 @@
-FROM alpine:3.3
+FROM alpine:3.5
 MAINTAINER Lars Krantz
 
 ENV TEMP_BACKUP_DIR /backuptemp
