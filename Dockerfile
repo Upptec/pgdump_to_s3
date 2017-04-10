@@ -6,7 +6,6 @@ RUN mkdir $TEMP_BACKUP_DIR
 
 RUN apk -Uv add python py-pip \
  && apk -UvX http://dl-4.alpinelinux.org/alpine/edge/main add postgresql \
- && apk -UvX http://dl-4.alpinelinux.org/alpine/edge/main add gzip \
  && apk -UvX http://dl-4.alpinelinux.org/alpine/edge/main add bash \
  && pip install --upgrade pip \
  && pip install awscli \

@@ -4,7 +4,7 @@ S3TARGET=$1
 shift
 for var in "$@"
 do
-  GZFILE=$var.gz
-  pg_dump -Fc --no-acl --no-owner $var | gzip > $TEMP_BACKUP_DIR/$GZFILE
-  aws s3 mv $TEMP_BACKUP_DIR/$GZFILE "$S3TARGET/$GZFILE"
+  OUTFILE=$var.pgdump
+  pg_dump -Fc -f $TEMP_BACKUP_DIR/$OUTFILE --no-acl --no-owner $var
+  aws s3 mv $TEMP_BACKUP_DIR/$OUTFILE "$S3TARGET/$OUTFILE"
 done

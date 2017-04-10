@@ -1,5 +1,5 @@
 # PGDump to S3
-A small utility to dump a database, gzip it, and upload to S3
+A small utility to dump one or more databases and uploading them to S3
 
 ## Requirements
 
@@ -26,7 +26,7 @@ The script takes these parameters:
     `s3://mybucket/myfolder database_1 database_2`
 
 so you can dump several named databases in one go.
-The utility will gzip to a file named as `[database_name].gz` and then upload it to S3. It will replace an already present file.
+The utility will create files named as `[database_name].pgdump` and then upload it to S3. It will replace an already present file.
 
 ## pg_dump parameters
 
@@ -45,9 +45,9 @@ explanied as (from `man pg_dump`):
 ## Howto restore
 Note: we use it to restore to a local db, mostly for developing purposes, so `pg_restore`-command below reflects that.
 
-  * After downloading, unpack using `gzip -d mydump.gz`.
-  * Then: `pg_restore --verbose --clean --no-acl --no-owner -h localhost -U myuser -d mydb mydump`.
+  * Download from s3, for example with aws-cli: `aws s3 cp s3://mybucket/myfolder/database_1.pgdump ./`
+  * Then: `pg_restore --verbose --clean --no-acl --no-owner -d postgres://myuser@localhost/database_1 database_1.pgdump`.
 
-Since this utility uses same name on dump as database, and we use our local username as db-user, this is would be the syntax for database `mydb`, unpacked from file `mydb.gz`:
+Since this utility uses same name on dump as database, appending `.pgdump`, and we use our local username as db-user, this is would be the syntax for database `mydb`,:
 
-    pg_restore --verbose --clean --no-acl --no-owner -h localhost -U $USER -d mydb mydb
+    pg_restore --verbose --clean --no-acl --no-owner -d postgres://$USER@localhost/mydb mydb.pgdump
